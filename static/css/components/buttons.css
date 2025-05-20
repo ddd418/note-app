@@ -1,0 +1,26 @@
+/* 2. Button Styles */
+button {
+  cursor: pointer;
+  border: none;
+  background-color: #4a90e2;
+  color: #fff;
+  padding: 0.5em 1em;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+button:hover {
+  background-color: #357abd;
+}
+.edit-btn {
+  background-color: #4caf50;
+}
+.edit-btn:hover {
+  background-color: #3e8e41;
+}
+.delete-btn {
+  background-color: #e14a4a;
+}
+.delete-btn:hover {
+  background-color: #b83737;
+}

@@ -1,0 +1,11 @@
+/* 3. Form Elements */
+input, textarea, select {
+  font-size: 0.9rem;
+  padding: 0.5em;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #4a90e2;
+}

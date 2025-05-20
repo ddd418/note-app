@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <title>노트 앱</title>
+    <link rel="stylesheet" href="/static/css/base.css" />
+    <link rel="stylesheet" href="/static/css/components/buttons.css" />
+    <link rel="stylesheet" href="/static/css/components/forms.css" />
+    <link rel="stylesheet" href="/static/css/layout.css" />
+    <link rel="stylesheet" href="/static/css/pages/index.css" />
+    <link rel="stylesheet" href="/static/css/responsive.css" />
+
+    <!-- 버튼 크기만 작게 조정 -->
+    <style>
+      .btn-group button {
+        padding: 0.2rem 0.5rem;
+        font-size: 0.8rem;
+      }
+    </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@6.6.2/dist/fuse.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sortablejs@1.14.0/Sortable.min.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>노트 앱</h1>
+
+      <div class="search-box">
+        <input id="searchInput" type="text" placeholder="노트 검색..." />
+      </div>
+      <div id="searchResults"></div>
+
+      <div class="top-controls" style="text-align: right; margin-bottom: 1rem">
+        <button onclick="location.href='/mindmap.html'">마인드맵 보기</button>
+        <button onclick="location.href='/templates.html'">템플릿 관리</button>
+      </div>
+
+      <div id="categories">
+        {% for cat in categories %}
+        <div class="category">
+          <h2>
+            <button class="toggle-cat" data-cat="{{ cat.id }}">
+              ▶︎ {{ cat.name }}
+            </button>
+          </h2>
+          <div
+            class="mid-list"
+            id="mid-list-{{ cat.id }}"
+            style="display: none"
+          >
+            {% for mid in cat.midcategories %}
+            <div class="mid-item">
+              <div class="midcategory">
+                <h3 class="mid-label">{{ mid.name }}</h3>
+                <div class="btn-group">
+                  <button
+                    class="edit-mid-btn"
+                    data-cat="{{ cat.id }}"
+                    data-mid="{{ mid.id }}"
+                  >
+                    수정
+                  </button>
+                  <button
+                    class="del-mid-btn"
+                    data-cat="{{ cat.id }}"
+                    data-mid="{{ mid.id }}"
+                  >
+                    삭제
+                  </button>
+                </div>
+                <div
+                  class="sub-list"
+                  id="sub-list-{{ cat.id }}-{{ mid.id }}"
+                  style="display: none; margin-left: 1.5rem"
+                >
+                  {% for sub in mid.subcategories %}
+                  <div class="sub-item">
+                    <a
+                      href="/detail.html?cat={{ cat.id }}&mid={{ mid.id }}&sub={{ sub.id }}"
+                      >{{ sub.name }}</a
+                    >
+                    <div class="btn-group">
+                      <button
+                        class="edit-sub-btn"
+                        data-cat="{{ cat.id }}"
+                        data-mid="{{ mid.id }}"
+                        data-sub="{{ sub.id }}"
+                      >
+                        수정
+                      </button>
+                      <button
+                        class="del-sub-btn"
+                        data-cat="{{ cat.id }}"
+                        data-mid="{{ mid.id }}"
+                        data-sub="{{ sub.id }}"
+                      >
+                        삭제
+                      </button>
+                    </div>
+                  </div>
+                  {% endfor %}
+                  <div class="add-sub" style="margin-top: 0.5rem">
+                    <input
+                      class="new-sub-name"
+                      data-cat="{{ cat.id }}"
+                      data-mid="{{ mid.id }}"
+                      placeholder="새 소분류 이름"
+                    />
+                    <button
+                      class="add-sub-btn"
+                      data-cat="{{ cat.id }}"
+                      data-mid="{{ mid.id }}"
+                    >
+                      추가
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            {% endfor %}
+            <div class="add-mid" style="margin-top: 0.5rem">
+              <input
+                class="new-mid-name"
+                data-cat="{{ cat.id }}"
+                placeholder="새 중분류 이름"
+              />
+              <button class="add-mid-btn" data-cat="{{ cat.id }}">추가</button>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+
+      <div class="add-category" style="margin-top: 1rem">
+        <input id="newCatName" placeholder="새 대분류 이름" />
+        <button id="addCatBtn">추가</button>
+      </div>
+    </div>
+
+    <script src="/static/js/main.js"></script>
+  </body>
+</html>

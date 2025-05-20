@@ -1,0 +1,15 @@
+/* 9. Responsive */
+@media (max-width: 600px) {
+  .container, #detail-container {
+    padding: 1em;
+  }
+  .category .cat-header,
+  .template-card .tpl-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .btn-group {
+    flex-direction: column;
+    gap: 0.25em;
+  }
+}

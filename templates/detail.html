@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <title>노트 편집</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/components/buttons.css">
+  <link rel="stylesheet" href="/static/css/components/forms.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+  <link rel="stylesheet" href="/static/css/pages/detail.css">
+</head>
+<body>
+  <div id="detail-container">
+    <header class="detail-header">
+      <h1 id="title">노트 편집</h1>
+      <button id="backBtn" type="button" onclick="history.back()">← 뒤로</button>
+    </header>
+
+    <!-- 빵부스러기 표시 영역 -->
+    <nav id="breadcrumb" class="breadcrumb"></nav>
+
+    <!-- 기존 폼 영역 (템플릿 선택, 동적 필드, 모델, 첨부파일 등) -->
+    <form id="noteForm" class="detail-form">
+      <div class="form-row">
+        <label for="tplSelect">템플릿:</label>
+        <select id="tplSelect"></select>
+        <button id="openTplModalBtn" type="button">+ 템플릿 추가</button>
+      </div>
+
+      <div id="dynamicFields"></div>
+
+      <div id="tplModal" class="modal" style="display:none;">
+        <div class="modal-content">
+          <h2>새 템플릿 만들기</h2>
+          <input id="tplNameInput" placeholder="템플릿 이름" />
+          <input id="tplFieldInput" placeholder="필드명" />
+          <button id="addFieldToPreview">필드 추가</button>
+          <ul id="fieldPreviewList"></ul>
+          <label><input type="checkbox" id="tplIncludeModels"> 모델 포함</label>
+          <div class="modal-actions">
+            <button id="createTplInModal">생성</button>
+            <button id="closeTplModalBtn">취소</button>
+          </div>
+        </div>
+      </div>
+
+      <section id="modelsSection" class="form-section">
+        <h2>모델별 설명</h2>
+        <div id="modelList"></div>
+        <div class="model-form">
+          <input id="newModelName" placeholder="모델 이름" />
+          <input id="newModelDesc" placeholder="설명" />
+          <input id="newModelApp"  placeholder="적용분야" />
+          <button id="addModelBtn" type="button">추가</button>
+        </div>
+      </section>
+
+      <section id="attachmentsSection" class="form-section">
+        <h2>첨부 파일</h2>
+        <div class="attach-form">
+          <input id="attachFile" type="file" />
+          <button id="uploadBtn" type="button">업로드</button>
+        </div>
+        <ul id="attachList"></ul>
+      </section>
+
+      <div class="form-actions">
+        <button type="submit">저장</button>
+      </div>
+    </form>
+  </div>
+
+  <script src="/static/js/detail.js"></script>
+</body>
+</html>

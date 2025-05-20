@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>노트 마인드맵</title>
+  <link rel="stylesheet" href="/static/css/base.css">
+  <link rel="stylesheet" href="/static/css/components/buttons.css">
+  <link rel="stylesheet" href="/static/css/components/forms.css">
+  <link rel="stylesheet" href="/static/css/layout.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+  <link rel="stylesheet" href="/static/css/pages/mindmap.css">
+</head>
+<body>
+  <button class="back-btn" onclick="window.location.href='/'">
+    ← 메인으로 돌아가기
+  </button>
+
+  <h1>📌 노트 관계 맵</h1>
+  <div id="network"></div>
+
+  <!-- 이 컨트롤 박스가 반드시 이 위치에 있어야 합니다 -->
+  <div id="controls">
+    <select id="selectFrom"></select>
+    <span>→</span>
+    <select id="selectTo"></select>
+    <button id="addRelBtn">관계 추가</button>
+    <button id="delRelBtn">관계 삭제</button>
+  </div>
+
+  <div id="detailModal" class="hidden">
+    <div id="modalContent"></div>
+  </div>
+
+  <script src="https://unpkg.com/vis-network/standalone/umd/vis-network.min.js"></script>
+  <script src="/static/js/mindmap.js"></script>
+</body>
+</html>

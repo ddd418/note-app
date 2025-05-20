@@ -1,0 +1,21 @@
+/* 7. Templates Page */
+#tplList {
+  margin-bottom: 1em;
+}
+.template-card {
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1em;
+  padding: 1em;
+}
+.template-card .tpl-header {
+  display: flex;
+  align-items: center;
+}
+.template-card .template-controls {
+  margin-left: auto;
+  display: flex;
+  gap: 0.5em;
+}
