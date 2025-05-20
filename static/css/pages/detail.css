@@ -138,3 +138,11 @@ textarea {
   margin-bottom: 1.5em;
 }
 
+/* 모델 항목 전체를 flex 컨테이너로 만들고, 텍스트와 버튼 그룹을 양쪽 끝으로 배치 */
+.model-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* 필요하다면 여백, 패딩 등 추가 */
+  margin-bottom: 0.5em;
+}
