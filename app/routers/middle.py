@@ -4,8 +4,8 @@ from fastapi import APIRouter, HTTPException, Path, Body
 from typing import List
 from app.models import MidCategory
 from app.utils.data import DataManager
+from .config_local import ADMIN_IPS
 
-ADMIN_IPS = {"127.0.0.1"}
 router = APIRouter(
     prefix="/api/categories/{category_id}/midcategories",
     tags=["midcategories"],

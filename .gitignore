@@ -4,3 +4,4 @@ uploads
 backup
 data.json
 run.py
+config_local.py
